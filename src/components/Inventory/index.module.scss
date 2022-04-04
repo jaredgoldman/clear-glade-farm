@@ -1,0 +1,19 @@
+.root {
+  width: 100%;
+}
+
+.inventoryTable {
+  margin-bottom: 4rem;
+}
+
+.notes {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.notesContent {
+  margin-top: 1rem;
+  max-width: 45rem;
+  text-align: center;
+}

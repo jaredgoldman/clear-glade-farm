@@ -1,0 +1,31 @@
+import React from "react"
+// import announcementData from "../../../mocks/announcementData";
+import Announcement from "./Announcement"
+
+import * as styles from "./index.module.scss"
+
+export default function Announcements({ posts }) {
+  const announcements = posts.reverse().map((post, i) => {
+    if (i <= 5) {
+      const { title, content, createdAt, updatedAt, id, Image } = post.node
+
+      return (
+        <Announcement
+          title={title}
+          content={content}
+          createdAt={createdAt}
+          updatedAt={updatedAt}
+          imageUrl={Image.url}
+          key={id}
+        />
+      )
+    }
+  })
+
+  return (
+    <div className={styles.root}>
+      <h2 className={styles.heading}>Recent Announcements</h2>
+      <div className={styles.announcements}>{announcements}</div>
+    </div>
+  )
+}

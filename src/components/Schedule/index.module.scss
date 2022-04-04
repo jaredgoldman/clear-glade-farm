@@ -1,0 +1,23 @@
+.root {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.events {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  max-width: 50rem;
+}
+
+.heading {
+  padding: 1rem;
+  margin-bottom: 1.75rem;
+  font-family: var(--hero_font);
+  width: 100%;
+  text-align: center;
+  font-size: 3rem;
+}

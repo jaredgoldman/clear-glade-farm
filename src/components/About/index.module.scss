@@ -1,0 +1,28 @@
+.root {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.article {
+  margin-bottom: 3rem;
+}
+
+.contact {
+  display: flex;
+  margin-bottom: 3rem;
+}
+
+.contactInfo {
+  width: 50%;
+}
+
+.map {
+  width: 50%;
+  padding-left: 2rem;
+  height: 100%;
+}
+
+.rules {
+  margin-bottom: 3rem;
+}
