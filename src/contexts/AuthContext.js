@@ -39,7 +39,6 @@ export function AuthProvider({ children }) {
       ls("user", user.data)
       navigate("/about")
     } catch (e) {
-      console.log("error", e.response.data)
       handleSetAuthError("Error logging in")
     }
   }

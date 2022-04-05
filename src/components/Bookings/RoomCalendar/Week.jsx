@@ -30,7 +30,6 @@ export default function Week({ start, end, thursday, bookings, rooms }) {
     }
     const availableRooms = roomCount - rooms
     const availableCampSites = campsiteCount - campSites
-    console.log("available?", availableRooms, availableCampSites)
     return {
       rooms: availableRooms,
       campSites: availableCampSites,
