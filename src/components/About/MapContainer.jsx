@@ -1,12 +1,12 @@
-import React from 'react'
-import { GoogleMap, LoadScript } from '@react-google-maps/api'
-import * as styles from './MapContainer.module.scss'
+import React from "react"
+import { GoogleMap, LoadScript } from "@react-google-maps/api"
+import * as styles from "./MapContainer.module.scss"
 const googleMapsApiKey = process.env.GATSBY_GOOGLE_MAPS_KEY
 
 export default function MapContainer() {
   const mapStyles = {
-    height: '40vh',
-    width: '100%',
+    height: "25rem",
+    width: "100%",
   }
 
   const defaultCenter = {
@@ -17,7 +17,11 @@ export default function MapContainer() {
   return (
     <div className={styles.container}>
       <LoadScript googleMapsApiKey={googleMapsApiKey}>
-        <GoogleMap mapContainerStyle={mapStyles} zoom={13} center={defaultCenter} />
+        <GoogleMap
+          mapContainerStyle={mapStyles}
+          zoom={13}
+          center={defaultCenter}
+        />
       </LoadScript>
     </div>
   )

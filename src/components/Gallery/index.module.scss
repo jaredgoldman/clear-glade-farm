@@ -26,3 +26,15 @@
   margin-top: 1rem;
   padding: 0 0.5rem;
 }
+
+@media only screen and (max-width: 800px) {
+  .carousel {
+    min-width: 1rem;
+    width: 30rem;
+  }
+}
+@media only screen and (max-width: 600px) {
+  .carousel {
+    width: 20rem;
+  }
+}

@@ -55,6 +55,7 @@ export default function Login() {
             onChange={e => handleSetEmail(e)}
             type="email"
             placeholder="Enter email"
+            className="mb-1"
           />
           <Form.Text className="text-muted">
             We'll never share your email with anyone else.
@@ -69,10 +70,15 @@ export default function Login() {
             placeholder="Password"
           />
         </Form.Group>
-        <Button variant="primary" type="submit">
-          Submit
-        </Button>
+        <div className={styles.buttonContainer}>
+          <Button variant="primary" type="submit" className="w-100">
+            Submit
+          </Button>
+        </div>
       </Form>
+      <div className={styles.contact}>
+        <a href="mailto:andrew@cleargladefarm.com">Contact us</a>
+      </div>
     </main>
   )
 }

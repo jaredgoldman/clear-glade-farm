@@ -20,15 +20,16 @@ export default function Landing() {
         </video>
       </div>
       <div className={styles.content}>
-        <h1>Welcome To Clear Glade</h1>
-        <div className={styles.welcome}>
+        <h1 className={styles.welcome}>Welcome To Clear Glade</h1>
+        <div className={styles.brandLogin}>
           <StaticImage
             src="../../images/logo.png"
             alt="logo"
             placeholder="blurred"
-            layout="fixed"
+            layout="constrained"
             width={500}
             height={500}
+            className={styles.image}
           />
           {!loggedIn && <Login />}
         </div>

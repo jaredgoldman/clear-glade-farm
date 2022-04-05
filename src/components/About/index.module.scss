@@ -18,11 +18,27 @@
 }
 
 .map {
-  width: 50%;
-  padding-left: 2rem;
+  margin-left: 2rem;
   height: 100%;
+  width: 50%;
 }
 
 .rules {
   margin-bottom: 3rem;
+}
+
+@media only screen and (max-width: 768px) {
+  .contact {
+    flex-direction: column;
+  }
+
+  .contactInfo {
+    width: 100%;
+    margin-bottom: 2rem;
+  }
+
+  .map {
+    width: 100%;
+    margin-left: 0;
+  }
 }

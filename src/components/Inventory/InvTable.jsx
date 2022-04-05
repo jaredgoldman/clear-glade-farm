@@ -21,7 +21,7 @@ export default function InvTable({ rows }) {
 
   return (
     <div className={styles.root}>
-      <Table striped bordered hover>
+      <Table responsive striped bordered hover>
         <thead className={styles.tableHeading}>
           <th>#</th>
           <th>Item</th>

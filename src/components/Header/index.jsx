@@ -3,8 +3,6 @@ import { Link } from "gatsby"
 import * as styles from "./Header.module.scss"
 import { useAuth } from "../../contexts/AuthContext"
 import { Navbar, Nav } from "react-bootstrap"
-import { StaticImage } from "gatsby-plugin-image"
-import logo from "../../images/logo.png"
 
 export default function Header() {
   const { logout, loggedIn } = useAuth()
@@ -22,14 +20,6 @@ export default function Header() {
       >
         <Navbar.Brand className="d-flex flex-row justify-content-between align-items-center">
           <Link to="/">Clear Glade Farm</Link>
-          {/* <StaticImage
-            src="../../images/logo.png"
-            alt="logo"
-            placeholder="blurred"
-            layout="fixed"
-            width={40}
-            height={40}
-          /> */}
         </Navbar.Brand>
         <>
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
