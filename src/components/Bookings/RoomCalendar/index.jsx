@@ -14,10 +14,6 @@ export default function RoomCalendar() {
     if (months?.length) setMonth(months[0])
   }, [months])
 
-  useEffect(() => {
-    console.log(month)
-  }, [month])
-
   const getWeeklyBookings = start => {
     const weeklyBookings = []
     if (bookings) {

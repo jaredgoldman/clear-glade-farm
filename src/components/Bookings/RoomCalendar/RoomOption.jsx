@@ -1,6 +1,7 @@
-import React from 'react'
-import * as styles from './RoomOption.module.scss'
-import { useAuth } from '../../../contexts/AuthContext'
+import React from "react"
+import { Button } from "react-bootstrap"
+import * as styles from "./RoomOption.module.scss"
+import { useAuth } from "../../../contexts/AuthContext"
 
 export default function RoomOption({
   weekInfo,
@@ -27,12 +28,16 @@ export default function RoomOption({
   }
 
   return (
-    <button className={styles.root} onClick={() => handleSetSelectedRoom()} disabled={booked}>
+    <Button
+      className={styles.root}
+      onClick={() => handleSetSelectedRoom()}
+      disabled={booked}
+    >
       {booked ? (
         <div>{`${roomName} currently booked by ${currentUser.user.firstName} ${currentUser.user.lastName}`}</div>
       ) : (
         <div>{`Book ${roomName}`}</div>
       )}
-    </button>
+    </Button>
   )
 }

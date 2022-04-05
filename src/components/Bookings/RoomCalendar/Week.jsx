@@ -2,7 +2,7 @@ import React, { useEffect, useState, useRef } from "react"
 import { format } from "date-fns"
 import RoomModal from "./RoomModal"
 import * as styles from "./Week.module.scss"
-import { Card, Button } from "react-bootstrap"
+import { Card, Button, Alert } from "react-bootstrap"
 
 export default function Week({ start, end, thursday, bookings, rooms }) {
   const [showModal, setShowModal] = useState(false)
@@ -30,6 +30,7 @@ export default function Week({ start, end, thursday, bookings, rooms }) {
     }
     const availableRooms = roomCount - rooms
     const availableCampSites = campsiteCount - campSites
+    console.log("available?", availableRooms, availableCampSites)
     return {
       rooms: availableRooms,
       campSites: availableCampSites,
@@ -45,12 +46,28 @@ export default function Week({ start, end, thursday, bookings, rooms }) {
     "E LLL do"
   )}`
 
+  const roomsAvailable = availabilites.rooms > 0
+  const campsitesAvailable = availabilites.campSites > 0
+
   return (
     <Card className={styles.root}>
       <Card.Header>{dateRange}</Card.Header>
-      <Card.Body>
+      <Card.Body className="pb-10">
         <Card.Text>
-          <div>{`There are currently ${availabilites.rooms} rooms available and ${availabilites.campSites} campsite available`}</div>
+          <Alert
+            className="text-center"
+            variant={roomsAvailable ? "success" : "secondary"}
+          >
+            {roomsAvailable ? "Rooms available!" : "No rooms available"}
+          </Alert>
+          <Alert
+            className="text-center mb-0"
+            variant={campsitesAvailable ? "success" : "secondary"}
+          >
+            {campsitesAvailable
+              ? "Campsites available!"
+              : "No campsites available"}
+          </Alert>
         </Card.Text>
       </Card.Body>
       <RoomModal

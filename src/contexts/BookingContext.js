@@ -1,4 +1,6 @@
 import React, { useContext, useEffect, useState } from "react"
+import { useStaticQuery, graphql } from "gatsby"
+import axios from "axios"
 import {
   addWeeks,
   startOfWeek,
@@ -9,11 +11,9 @@ import {
   getWeeksInMonth,
   getMonth,
 } from "date-fns"
-import { months as monthNames } from "../constants/date"
-import axios from "axios"
 import UseEmail from "../hooks/UseEmail"
 import { useAuth } from "./AuthContext"
-import { useStaticQuery, graphql } from "gatsby"
+import { months as monthNames } from "../constants/date"
 const serverURL = process.env.GATSBY_STRAPI_API_URL
 
 const BookingContext = React.createContext()
@@ -23,7 +23,7 @@ export function useBooking() {
 }
 
 export function BookingProvider({ children }) {
-  const { authToken, jwt } = useAuth()
+  const { authToken } = useAuth()
   const [months, setMonths] = useState()
   const [bookings, setBookings] = useState()
   const [processingBooking, setProcessingBooking] = useState(false)
@@ -121,8 +121,8 @@ export function BookingProvider({ children }) {
 
   const getBookings = async () => {
     try {
-      const res = await axios.get(`${serverURL}/api/bookings/`, authToken)
-      return res.data.data
+      const { data } = await axios.get(`${serverURL}/api/bookings/`, authToken)
+      return data.data
     } catch (error) {
       console.log(error.response.data)
     }
