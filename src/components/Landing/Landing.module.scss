@@ -16,12 +16,20 @@
   z-index: 1;
 }
 
-.video,
-.videoHeader {
+.videoContainer {
+  width: 100vw;
+  height: 125vh;
+  min-height: 100vh;
   z-index: 0;
   position: absolute;
-  width: 100vw;
-  top: 0;
+}
+
+.video,
+.videoHeader {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 0;
 }
 
 .videoHeader {

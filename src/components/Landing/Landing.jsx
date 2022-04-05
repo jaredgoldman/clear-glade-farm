@@ -9,14 +9,16 @@ export default function Landing() {
   const { loggedIn } = useAuth()
   return (
     <main className={styles.root}>
-      <video
-        className={loggedIn ? styles.videoHeader : styles.video}
-        autoPlay
-        loop
-        muted
-      >
-        <source src={farmVideo} type="video/mp4" />
-      </video>
+      <div className={styles.videoContainer}>
+        <video
+          className={loggedIn ? styles.videoHeader : styles.video}
+          autoPlay
+          loop
+          muted
+        >
+          <source src={farmVideo} type="video/mp4" />
+        </video>
+      </div>
       <div className={styles.content}>
         <h1>Welcome To Clear Glade</h1>
         <div className={styles.welcome}>
