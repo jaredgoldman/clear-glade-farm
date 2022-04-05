@@ -12,6 +12,21 @@
   align-items: center;
 }
 
+.content {
+  z-index: 1;
+}
+
+.video,
+.videoHeader {
+  z-index: 0;
+  position: absolute;
+  width: 100vw;
+  top: 0;
+}
+
+.videoHeader {
+  top: 4rem;
+}
 // .hero {
 //   background-image: url(../../images/pathway.png);
 //   background-repeat: no-repeat;

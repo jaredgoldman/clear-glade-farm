@@ -9,6 +9,9 @@ import logo from "../../images/logo.png"
 export default function Header() {
   const { logout, loggedIn } = useAuth()
 
+  if (!loggedIn) {
+    return null
+  }
   return (
     <main className={styles.root}>
       <Navbar
