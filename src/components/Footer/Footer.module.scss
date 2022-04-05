@@ -5,4 +5,14 @@
   align-items: center;
   padding: 2em;
   margin-top: 2rem;
+  font-family: var(--heading_font);
+
+  a {
+    color: black;
+    text-decoration: none;
+  }
+
+  a:hover {
+    text-decoration: underline;
+  }
 }

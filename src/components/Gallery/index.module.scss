@@ -5,14 +5,24 @@
 }
 
 .heading {
+  padding: 1rem;
+  margin-bottom: 1.75rem;
+  font-family: var(--hero_font);
   width: 100%;
-  text-align: left;
-  padding: 2rem;
+  text-align: center;
+  font-size: 3rem;
 }
 
-.collections {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  grid-template-rows: 1fr 1fr;
-  justify-items: center;
+.carousel {
+  max-width: 50rem;
+  min-width: 50rem;
+  margin-bottom: 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.description {
+  margin-top: 1rem;
+  padding: 0 0.5rem;
 }

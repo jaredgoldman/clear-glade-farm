@@ -1,10 +1,22 @@
-import React from "react"
+import React, { useState, useEffect } from "react"
+import getYear from "date-fns/getYear"
 import Week from "./Week"
 import * as styles from "./index.module.scss"
+import { Dropdown } from "react-bootstrap"
 import { useBooking } from "../../../contexts/BookingContext"
 
 export default function RoomCalendar() {
-  const { weeks, bookings, rooms } = useBooking()
+  const { months, bookings, rooms } = useBooking()
+  const [month, setMonth] = useState()
+  const monthName = month?.month || ""
+
+  useEffect(() => {
+    if (months?.length) setMonth(months[0])
+  }, [months])
+
+  useEffect(() => {
+    console.log(month)
+  }, [month])
 
   const getWeeklyBookings = start => {
     const weeklyBookings = []
@@ -20,7 +32,7 @@ export default function RoomCalendar() {
     return weeklyBookings
   }
 
-  const schedule = weeks?.map((week, i) => {
+  const schedule = month?.weeks?.map((week, i) => {
     const { start, end, thursday } = week
 
     const bookings = getWeeklyBookings(start)
@@ -36,8 +48,24 @@ export default function RoomCalendar() {
     )
   })
 
+  const dropdownItems = months?.map(month => {
+    return (
+      <Dropdown.Item key={month.month} onClick={() => setMonth(month)}>
+        {month.month}
+      </Dropdown.Item>
+    )
+  })
+
+  const currentYear = getYear(Date.now())
   return (
     <div>
+      <div className={styles.dropdown}>
+        <p>Select a month in {currentYear}</p>
+        <Dropdown>
+          <Dropdown.Toggle>{monthName}</Dropdown.Toggle>
+          <Dropdown.Menu>{dropdownItems}</Dropdown.Menu>
+        </Dropdown>
+      </div>
       <div className={styles.weeksContainer}>
         <div className={styles.weeks}>{schedule}</div>
       </div>

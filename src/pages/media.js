@@ -21,10 +21,13 @@ export const query = graphql`
           name
           description
           collection {
-            url
-            name
-            height
-            width
+            caption
+            id
+            localFile {
+              childImageSharp {
+                gatsbyImageData(height: 500, width: 800)
+              }
+            }
           }
         }
       }

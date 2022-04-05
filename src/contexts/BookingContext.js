@@ -1,5 +1,15 @@
 import React, { useContext, useEffect, useState } from "react"
-import { addWeeks, startOfWeek, endOfWeek, nextThursday } from "date-fns"
+import {
+  addWeeks,
+  startOfWeek,
+  endOfWeek,
+  nextThursday,
+  eachMonthOfInterval,
+  addYears,
+  getWeeksInMonth,
+  getMonth,
+} from "date-fns"
+import { months as monthNames } from "../constants/date"
 import axios from "axios"
 import UseEmail from "../hooks/UseEmail"
 import { useAuth } from "./AuthContext"
@@ -14,8 +24,7 @@ export function useBooking() {
 
 export function BookingProvider({ children }) {
   const { authToken, jwt } = useAuth()
-  // const [rooms, setRooms] = useState()
-  const [weeks, setWeeks] = useState()
+  const [months, setMonths] = useState()
   const [bookings, setBookings] = useState()
   const [processingBooking, setProcessingBooking] = useState(false)
 
@@ -39,7 +48,7 @@ export function BookingProvider({ children }) {
   const rooms = roomData.allStrapiAccommodation.edges
 
   useEffect(() => {
-    setWeeks(getWeeks(Date.now()))
+    setMonths(getMonths(1))
   }, [])
 
   useEffect(() => {
@@ -52,16 +61,48 @@ export function BookingProvider({ children }) {
     })
   }, [processingBooking])
 
-  const getWeeks = currDate => {
+  const formatWeek = currDate => {
+    const start = startOfWeek(currDate, { weekStartsOn: 1 })
+    const end = endOfWeek(currDate, { weekStartsOn: 1 })
+    const thursday = nextThursday(start)
+
+    return {
+      start,
+      end,
+      thursday,
+    }
+  }
+
+  const getWeeks = (currDate, numOfWeeks) => {
     const firstWeek = formatWeek(currDate)
     const weeks = [firstWeek]
 
-    for (let i = 1; i <= 7; i++) {
+    for (let i = 1; i < numOfWeeks; i++) {
       currDate = addWeeks(currDate, 1)
       const formattedWeek = formatWeek(currDate)
       weeks.push(formattedWeek)
     }
     return weeks
+  }
+
+  const getMonths = years => {
+    const start = Date.now()
+    const end = addYears(Date.now(), years)
+    const months = eachMonthOfInterval({ start, end })
+
+    return months
+      .map((m, i) => {
+        if (i < 12) {
+          const numOfWeeks = getWeeksInMonth(m)
+          return {
+            numOfWeeks,
+            month: monthNames[getMonth(m)],
+            start: m,
+            weeks: getWeeks(m, numOfWeeks),
+          }
+        }
+      })
+      .filter(Boolean)
   }
 
   const bookRoom = async bookingData => {
@@ -79,31 +120,17 @@ export function BookingProvider({ children }) {
   }
 
   const getBookings = async () => {
-    //TODO: only retreive bookings from the present day forward
     try {
       const res = await axios.get(`${serverURL}/api/bookings/`, authToken)
       return res.data.data
     } catch (error) {
-      console.log(error)
-    }
-  }
-
-  // HELPERS
-  const formatWeek = currDate => {
-    const start = startOfWeek(currDate, { weekStartsOn: 1 })
-    const end = endOfWeek(currDate, { weekStartsOn: 1 })
-    const thursday = nextThursday(start)
-
-    return {
-      start,
-      end,
-      thursday,
+      console.log(error.response.data)
     }
   }
 
   const value = {
     rooms,
-    weeks,
+    months,
     bookings,
     bookRoom,
     getBookings,

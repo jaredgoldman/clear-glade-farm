@@ -1,37 +1,41 @@
-import React, { useState } from "react"
-import LightboxElement from "./Lightbox"
+import React from "react"
+import { Carousel } from "react-bootstrap"
+import { GatsbyImage, getImage } from "gatsby-plugin-image"
 import * as styles from "./index.module.scss"
 
 export default function Gallery({ collections }) {
-  const [galleryOpen, setGalleryOpen] = useState()
-
-  const handleGalleryOpen = collectionId => {
-    setGalleryOpen(collectionId)
-  }
-
-  const galleryCollections = collections?.map((collectionData, i) => {
-    const { id, name, description, collection } = collectionData.node
-
+  const carouselCollections = collections.map(col => {
+    const { description, id, name, collection } = col.node
     return (
-      <LightboxElement
-        galleryOpen={galleryOpen === id ? true : false}
-        setGalleryOpen={setGalleryOpen}
-        images={collection}
-        description={description}
-        key={id}
-        collectionName={name}
-        handleGalleryOpen={handleGalleryOpen}
-        collectionId={id}
-      />
+      <div className={styles.carousel}>
+        <Carousel fade key={id}>
+          {collection.map(image => {
+            const { id, localFile, caption } = image
+            const imageSrc = getImage(localFile)
+            return (
+              <Carousel.Item key={id}>
+                <GatsbyImage
+                  className="d-block w-100"
+                  image={imageSrc}
+                  alt={caption}
+                  objectFit="contain"
+                />
+                <Carousel.Caption>
+                  <h3>{name}</h3>
+                  <p>{caption}</p>
+                </Carousel.Caption>
+              </Carousel.Item>
+            )
+          })}
+        </Carousel>
+        <p className={styles.description}>{description}</p>
+      </div>
     )
   })
-
   return (
     <div className={styles.root}>
-      <div className={styles.heading}>
-        <h2>Gallery</h2>
-      </div>
-      <div className={styles.collections}>Coming soon!</div>
+      <h2 className={styles.heading}>Media</h2>
+      {carouselCollections}
     </div>
   )
 }

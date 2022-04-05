@@ -7,6 +7,10 @@
     font-family: var(--heading_font);
     color: #000;
   }
+
+  a:hover {
+    text-decoration: underline;
+  }
 }
 
 .nav {

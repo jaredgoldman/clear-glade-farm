@@ -1,16 +1,20 @@
 import React from "react"
 import { Link } from "gatsby"
-import logo from "../../images/logo-white.png"
 import * as styles from "./Header.module.scss"
 import { useAuth } from "../../contexts/AuthContext"
-import { Navbar, Container, Nav, NavDropdown } from "react-bootstrap"
+import { Navbar, Nav } from "react-bootstrap"
 
 export default function Header() {
   const { logout, loggedIn } = useAuth()
 
   return (
     <main className={styles.root}>
-      <Navbar bg="light" expand="lg" className="px-5 py-3" fixed="top">
+      <Navbar
+        bg="light"
+        expand="lg"
+        className="px-5 py-3 border-bottom"
+        fixed="top"
+      >
         <Navbar.Brand>
           <Link to="/">Clear Glade Farms</Link>
         </Navbar.Brand>

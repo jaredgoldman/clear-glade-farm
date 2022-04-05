@@ -9,8 +9,8 @@ export default function Landing() {
   const { loggedIn } = useAuth()
   return (
     <main className={styles.root}>
+      <h1>Welcome To Clear Glade</h1>
       <div className={styles.welcome}>
-        <h1>Welcome To Clear Glade</h1>
         <StaticImage
           src="../../images/logo.png"
           alt="logo"
@@ -19,8 +19,8 @@ export default function Landing() {
           width={500}
           height={500}
         />
+        {!loggedIn && <Login />}
       </div>
-      {!loggedIn && <Login />}
     </main>
   )
 }

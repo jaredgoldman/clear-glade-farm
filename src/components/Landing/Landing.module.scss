@@ -1,13 +1,14 @@
 .root {
-  display: flex;
   height: 80vh;
+  display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
 }
 
 .welcome {
   display: flex;
-  flex-direction: column;
+  justify-content: center;
   align-items: center;
 }
 
