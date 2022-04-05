@@ -18,7 +18,7 @@ export default function Header() {
         fixed="top"
       >
         <Navbar.Brand className="d-flex flex-row justify-content-between align-items-center">
-          <Link to="/">Clear Glade Farms</Link>
+          <Link to="/">Clear Glade Farm</Link>
           {/* <StaticImage
             src="../../images/logo.png"
             alt="logo"
