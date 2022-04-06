@@ -40,7 +40,7 @@ export default function Login() {
               >
                 <Toast.Header className="justify-content-end">
                   <StaticImage
-                    src="../../images/close.png"
+                    src="../../images/close.jpeg"
                     alt="close"
                     placeholder="blurred"
                     layout="constrained"

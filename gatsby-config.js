@@ -1,4 +1,4 @@
-require("dotenv").config({
+require('dotenv').config({
   path: `.env.${process.env.NODE_ENV}`,
 })
 
@@ -6,14 +6,15 @@ const strapiConfig = {
   apiURL: process.env.GATSBY_STRAPI_API_URL,
   accessToken: process.env.GATSBY_STRAPI_TOKEN,
   collectionTypes: [
-    "accommodation",
-    "event",
+    'accommodation',
+    'event',
     `booking`,
-    "image-collection",
-    "post",
-    "product",
-    "user",
+    'image-collection',
+    'post',
+    'product',
+    'user',
   ],
+  singleTypes: ['about', 'inventory', 'guideline'],
 }
 
 module.exports = {
