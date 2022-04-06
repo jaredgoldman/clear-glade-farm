@@ -4,16 +4,30 @@ import About from '../components/About'
 import { graphql } from 'gatsby'
 
 export default function about({ data }) {
-  const aboutData = Object.values({ ...data.allStrapiAbout.nodes[0] })
-  const guideLineData = Object.values({ ...data.allStrapiGuideline.nodes[0] })
-  let about = {}
-  let guideLines = {}
-  aboutData.forEach(obj => (about = { ...about, ...obj }))
-  guideLineData.forEach(obj => (guideLines = { ...guideLines, ...obj }))
+  const {
+    farm_heading: farmHeading,
+    childStrapiAboutFarmTextnode: { farm },
+    project_heading: projectHeading,
+    childStrapiAboutProjectTextnode: { project },
+    contact_heading: contactHeading,
+    childStrapiAboutContactTextnode: { contact },
+    faq_heading: faqHeading,
+    FAQ: faqContent,
+  } = data.allStrapiAbout.nodes[0]
 
+  const content = {
+    farmHeading,
+    farm,
+    projectHeading,
+    project,
+    contactHeading,
+    contact,
+    faqHeading,
+    faqContent,
+  }
   return (
     <Layout>
-      <About about={about} guideLines={guideLines} />
+      <About content={content} />
     </Layout>
   )
 }
@@ -22,27 +36,26 @@ export const query = graphql`
   query {
     allStrapiAbout {
       nodes {
+        contact_heading
         childStrapiAboutContactTextnode {
           contact
         }
+        farm_heading
         childStrapiAboutFarmTextnode {
           farm
         }
+        project_heading
         childStrapiAboutProjectTextnode {
           project
         }
-      }
-    }
-    allStrapiGuideline {
-      nodes {
-        childStrapiGuidelineFacilitiesTextnode {
-          facilities
-        }
-        childStrapiGuidelineLodgingTextnode {
-          lodging
-        }
-        childStrapiGuidelinePropertyTextnode {
-          property
+        faq_heading
+        FAQ {
+          label
+          content {
+            data {
+              content
+            }
+          }
         }
       }
     }

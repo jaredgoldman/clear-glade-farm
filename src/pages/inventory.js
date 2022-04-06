@@ -9,8 +9,8 @@ export default function inventory({ data }) {
       data.allStrapiInventory.nodes[0].childStrapiInventoryNotesTextnode.notes,
     notesHeading: data.allStrapiInventory.nodes[0].notes_heading,
   }
-
   const products = data.allStrapiProduct.edges
+
   return (
     <Layout>
       <Inventory products={products} content={content} />

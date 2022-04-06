@@ -1,31 +1,46 @@
 import React from 'react'
 import MapContainer from './MapContainer'
 import * as styles from './index.module.scss'
-import Rules from './Rules'
+import AboutAccordion from './AboutAccordion'
 
-export default function About({ about, guideLines }) {
-  const { farm, project, contact } = about
+export default function About({ content }) {
+  const {
+    farmHeading,
+    farm,
+    projectHeading,
+    project,
+    contactHeading,
+    contact,
+    faqHeading,
+    faqContent,
+  } = content
   return (
     <div className={styles.root}>
       <div className={styles.article}>
-        <h2 className={styles.articleHeading}>About The Farm</h2>
-        <div dangerouslySetInnerHTML={{ __html: farm }} />
+        {farmHeading && (
+          <h2 className={styles.articleHeading}>{farmHeading}</h2>
+        )}
+        {farm && <div dangerouslySetInnerHTML={{ __html: farm }} />}
       </div>
       <div className={styles.article}>
-        <h2 className={styles.articleHeading}>About The Project</h2>
-        <div dangerouslySetInnerHTML={{ __html: project }} />
+        {projectHeading && (
+          <h2 className={styles.articleHeading}>{projectHeading}</h2>
+        )}
+        {project && <div dangerouslySetInnerHTML={{ __html: project }} />}
       </div>
       <div className={styles.contact}>
         <div className={styles.contactInfo}>
-          <h2 className={styles.contactHeading}>Contact/Location</h2>
-          <div dangerouslySetInnerHTML={{ __html: contact }} />
+          {contactHeading && (
+            <h2 className={styles.contactHeading}>{contactHeading}</h2>
+          )}
+          {contact && <div dangerouslySetInnerHTML={{ __html: contact }} />}
         </div>
         <div className={styles.map}>
           <MapContainer />
         </div>
       </div>
       <div className={styles.rules}>
-        <Rules content={guideLines} />
+        <AboutAccordion heading={faqHeading} content={faqContent} />
       </div>
     </div>
   )

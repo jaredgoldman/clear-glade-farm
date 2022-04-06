@@ -1,0 +1,13 @@
+.root {
+  width: 100%;
+}
+
+.heading {
+  margin-bottom: 1rem;
+}
+
+@media only screen and (max-width: 800px) {
+  .root {
+    min-width: 0rem;
+  }
+}
