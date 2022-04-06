@@ -1,8 +1,12 @@
-import React, { useState } from "react"
-import * as styles from "./Login.module.scss"
-import { useAuth } from "../../contexts/AuthContext"
-import { Form, Button, Toast, Row, Col } from "react-bootstrap"
-import { StaticImage } from "gatsby-plugin-image"
+// Libraries
+import React, { useState } from 'react'
+// Components
+import { Form, Button, Toast, Row, Col } from 'react-bootstrap'
+import { StaticImage } from 'gatsby-plugin-image'
+// Data
+import { useAuth } from '../../contexts/AuthContext'
+// Assets
+import * as styles from './Login.module.scss'
 
 export default function Login() {
   const { login, authError, setAuthError } = useAuth()
@@ -23,7 +27,7 @@ export default function Login() {
   }
 
   const handleCloseAuthError = () => {
-    setAuthError("")
+    setAuthError('')
   }
 
   return (

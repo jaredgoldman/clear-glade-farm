@@ -1,6 +1,9 @@
-import React from "react"
-import * as styles from "./Footer.module.scss"
-import { useAuth } from "../../contexts/AuthContext"
+// Libraries
+import React from 'react'
+// Assets
+import * as styles from './Footer.module.scss'
+// Data
+import { useAuth } from '../../contexts/AuthContext'
 
 export default function Footer() {
   const { loggedIn } = useAuth()

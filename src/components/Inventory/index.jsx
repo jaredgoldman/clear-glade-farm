@@ -1,5 +1,8 @@
+// Libraries
 import React from 'react'
+// Components
 import InvTable from './InvTable'
+// Assets
 import * as styles from './index.module.scss'
 
 export default function Inventory({ products, content }) {

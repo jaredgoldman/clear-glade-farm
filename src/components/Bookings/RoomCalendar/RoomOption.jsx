@@ -1,7 +1,11 @@
-import React from "react"
-import { Button } from "react-bootstrap"
-import * as styles from "./RoomOption.module.scss"
-import { useAuth } from "../../../contexts/AuthContext"
+// Libraries
+import React from 'react'
+// Components
+import { Button } from 'react-bootstrap'
+// Data
+import { useAuth } from '../../../contexts/AuthContext'
+// Assets
+import * as styles from './RoomOption.module.scss'
 
 export default function RoomOption({
   weekInfo,

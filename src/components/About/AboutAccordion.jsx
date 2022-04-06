@@ -1,6 +1,9 @@
+// Libraries
 import React from 'react'
-import * as styles from './AboutAccordion.module.scss'
+// Components
 import { Accordion } from 'react-bootstrap'
+// Assets
+import * as styles from './AboutAccordion.module.scss'
 
 export default function AboutAccordion({ heading, content }) {
   const accordionItems = content.map((item, i) => {

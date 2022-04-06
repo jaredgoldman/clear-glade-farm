@@ -1,7 +1,10 @@
-import React from "react"
-import RoomCalendar from "./RoomCalendar"
-import RoomList from "./RoomList"
-import * as styles from "./index.module.scss"
+// Libraries
+import React from 'react'
+// Components
+import RoomCalendar from './RoomCalendar'
+import RoomList from './RoomList'
+// Assets
+import * as styles from './index.module.scss'
 
 export default function Schedule({ rooms }) {
   return (

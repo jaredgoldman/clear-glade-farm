@@ -1,6 +1,9 @@
-import React from "react"
-import * as styles from "./InvTableRow.module.scss"
-import { GatsbyImage, getImage } from "gatsby-plugin-image"
+// Libraries
+import React from 'react'
+// Components
+import { GatsbyImage, getImage } from 'gatsby-plugin-image'
+// Assets
+import * as styles from './InvTableRow.module.scss'
 
 export default function InvTableRow({
   name,

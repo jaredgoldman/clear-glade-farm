@@ -1,19 +1,30 @@
+// Libraries
 import React, { useState, useEffect } from 'react'
 import getYear from 'date-fns/getYear'
+// Components
 import Week from './Week'
-import * as styles from './index.module.scss'
 import { Dropdown, Row, Col, Toast } from 'react-bootstrap'
+// Data
 import { useBooking } from '../../../contexts/BookingContext'
-
+// Assets
+import * as styles from './index.module.scss'
+// Libraries
+// Components
+// Data
+// Assets
 export default function RoomCalendar() {
   const { months, bookings, rooms } = useBooking()
   const [month, setMonth] = useState()
   const [showConfirmToast, setShowConfirmToast] = useState(false)
+
+  const currentYear = getYear(Date.now())
   const monthName = month?.month || ''
 
   useEffect(() => {
     if (months?.length) setMonth(months[0])
   }, [months])
+
+  const handleCloseToast = () => setShowConfirmToast(false)
 
   const getWeeklyBookings = start => {
     const weeklyBookings = []
@@ -53,10 +64,6 @@ export default function RoomCalendar() {
       </Dropdown.Item>
     )
   })
-
-  const currentYear = getYear(Date.now())
-
-  const handleCloseToast = () => setShowConfirmToast(false)
 
   return (
     <div>

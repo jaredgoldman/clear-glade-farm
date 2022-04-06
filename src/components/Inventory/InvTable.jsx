@@ -1,7 +1,10 @@
-import React from "react"
-import InvTableRow from "./InvTableRow"
-import { Table } from "react-bootstrap"
-import * as styles from "./InvTable.module.scss"
+// Libraries
+import React from 'react'
+// Components
+import InvTableRow from './InvTableRow'
+import { Table } from 'react-bootstrap'
+// Assets
+import * as styles from './InvTable.module.scss'
 
 export default function InvTable({ rows }) {
   const inventoryRows = rows.map((product, i) => {

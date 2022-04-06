@@ -1,9 +1,12 @@
+// Libraries
 import React, { useState } from 'react'
+// Components
 import Modal from 'react-bootstrap/Modal'
 import Button from 'react-bootstrap/Button'
 import RoomOption from './RoomOption'
+// Data
 import { useBooking } from '../../../contexts/BookingContext'
-
+// Assets
 import * as styles from './RoomModal.module.scss'
 
 export default function RoomModal({

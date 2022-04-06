@@ -1,7 +1,9 @@
-import React from "react"
-import Event from "./Event"
-// import eventData from '../../mocks/eventData'
-import * as styles from "./index.module.scss"
+// Libraries
+import React from 'react'
+// Components
+import Event from './Event'
+// Assets
+import * as styles from './index.module.scss'
 
 export default function Events({ events }) {
   const upcomingEvents = events.map(event => {

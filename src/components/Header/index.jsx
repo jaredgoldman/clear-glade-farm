@@ -1,8 +1,12 @@
-import React from "react"
-import { Link } from "gatsby"
-import * as styles from "./Header.module.scss"
-import { useAuth } from "../../contexts/AuthContext"
-import { Navbar, Nav } from "react-bootstrap"
+// Libraries
+import React from 'react'
+// Components
+import { Link } from 'gatsby'
+import { Navbar, Nav } from 'react-bootstrap'
+// Data
+import { useAuth } from '../../contexts/AuthContext'
+// Assets
+import * as styles from './Header.module.scss'
 
 export default function Header() {
   const { logout, loggedIn } = useAuth()

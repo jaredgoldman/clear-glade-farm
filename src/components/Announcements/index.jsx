@@ -1,7 +1,8 @@
+// Libraries
 import React from 'react'
-// import announcementData from "../../../mocks/announcementData";
+// Components
 import Announcement from './Announcement'
-
+// Assets
 import * as styles from './index.module.scss'
 
 export default function Announcements({ posts }) {

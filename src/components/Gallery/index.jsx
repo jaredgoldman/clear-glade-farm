@@ -1,7 +1,10 @@
-import React from "react"
-import { Carousel } from "react-bootstrap"
-import { GatsbyImage, getImage } from "gatsby-plugin-image"
-import * as styles from "./index.module.scss"
+// Libraries
+import React from 'react'
+// Components
+import { Carousel } from 'react-bootstrap'
+import { GatsbyImage, getImage } from 'gatsby-plugin-image'
+// Assets
+import * as styles from './index.module.scss'
 
 export default function Gallery({ collections }) {
   const carouselCollections = collections.map(col => {

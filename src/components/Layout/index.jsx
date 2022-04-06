@@ -1,8 +1,12 @@
-import React from "react"
-import { AuthProvider } from "../../contexts/AuthContext"
-import Footer from "../Footer"
-import Header from "../Header"
-import * as styles from "./Layout.module.scss"
+// Libraries
+import React from 'react'
+// Components
+import Footer from '../Footer'
+import Header from '../Header'
+// Data
+import { AuthProvider } from '../../contexts/AuthContext'
+// Assets
+import * as styles from './Layout.module.scss'
 
 export default function Layout({ children }) {
   return (

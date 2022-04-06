@@ -1,9 +1,13 @@
-import React, { useState } from "react"
-import farmVideo from "../../videos/farm.mp4"
-import Login from "../Login/Login"
-import { StaticImage } from "gatsby-plugin-image"
-import * as styles from "./Landing.module.scss"
-import { useAuth } from "../../contexts/AuthContext"
+// Libraries
+import React from 'react'
+// Components
+import Login from '../Login/Login'
+import { StaticImage } from 'gatsby-plugin-image'
+// Data
+import { useAuth } from '../../contexts/AuthContext'
+// Assets
+import farmVideo from '../../videos/farm.mp4'
+import * as styles from './Landing.module.scss'
 
 export default function Landing() {
   const { loggedIn } = useAuth()

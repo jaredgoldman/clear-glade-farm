@@ -1,7 +1,10 @@
+// Libraries
 import React from 'react'
+// Components
 import MapContainer from './MapContainer'
-import * as styles from './index.module.scss'
 import AboutAccordion from './AboutAccordion'
+// Assets
+import * as styles from './index.module.scss'
 
 export default function About({ content }) {
   const {

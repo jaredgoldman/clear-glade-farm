@@ -1,7 +1,10 @@
-import React from "react"
-import * as styles from "./Room.module.scss"
-import { GatsbyImage, getImage } from "gatsby-plugin-image"
-import { Card } from "react-bootstrap"
+// Libraries
+import React from 'react'
+// Components
+import { Card } from 'react-bootstrap'
+import { GatsbyImage, getImage } from 'gatsby-plugin-image'
+// Assets
+import * as styles from './Room.module.scss'
 
 export default function Room({ roomName, roomImage, description }) {
   const image = getImage(roomImage.localFile)

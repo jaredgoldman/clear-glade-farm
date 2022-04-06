@@ -1,8 +1,11 @@
-import React, { useEffect, useState, useRef } from 'react'
+// Libraries
+import React, { useEffect, useState } from 'react'
 import { format } from 'date-fns'
+// Components
 import RoomModal from './RoomModal'
-import * as styles from './Week.module.scss'
 import { Card, Button, Alert } from 'react-bootstrap'
+// Assets
+import * as styles from './Week.module.scss'
 
 export default function Week({
   start,
