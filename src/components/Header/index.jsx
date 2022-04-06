@@ -25,45 +25,31 @@ export default function Header() {
         <Navbar.Brand className="d-flex flex-row justify-content-between align-items-center">
           <Link to="/">Clear Glade Farm</Link>
         </Navbar.Brand>
-        <>
-          <Navbar.Toggle aria-controls="basic-navbar-nav" />
-          <Navbar.Collapse
-            id="basic-navbar-nav"
-            className="justify-content-end"
-          >
-            <Nav>
-              {loggedIn && (
-                <>
-                  <Nav.Link>
-                    <Link to="/about">About</Link>
-                  </Nav.Link>
-                  <Nav.Link>
-                    <Link to="/announcements">Annoucements</Link>
-                  </Nav.Link>
-                  <Nav.Link>
-                    <Link to="/schedule">Schedule</Link>
-                  </Nav.Link>
-                  <Nav.Link>
-                    <Link to="/inventory">Inventory</Link>
-                  </Nav.Link>
-                  <Nav.Link>
-                    <Link to="/bookings">Book A Room</Link>
-                  </Nav.Link>
-                  <Nav.Link>
-                    <Link to="/media">Media</Link>
-                  </Nav.Link>
-                  <Nav.Link>
-                    <Link to="/" onClick={logout}>
-                      Logout
-                    </Link>
-                  </Nav.Link>
-                </>
-              )}
-            </Nav>
-          </Navbar.Collapse>
-        </>
-        {/* </div> */}
-        {/* </Container> */}
+
+        <Navbar.Toggle aria-controls="basic-navbar-nav" />
+        <Navbar.Collapse id="basic-navbar-nav" className="justify-content-end">
+          <Nav className={styles.links}>
+            {loggedIn && (
+              <>
+                <Link to="/about">About</Link>
+
+                <Link to="/announcements">Annoucements</Link>
+
+                <Link to="/schedule">Schedule</Link>
+
+                <Link to="/inventory">Inventory</Link>
+
+                <Link to="/bookings">Book A Room</Link>
+
+                <Link to="/media">Media</Link>
+
+                <Link to="/" onClick={logout}>
+                  Logout
+                </Link>
+              </>
+            )}
+          </Nav>
+        </Navbar.Collapse>
       </Navbar>
     </main>
   )

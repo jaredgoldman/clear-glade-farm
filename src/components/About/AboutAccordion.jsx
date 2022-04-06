@@ -15,7 +15,7 @@ export default function AboutAccordion({ heading, content }) {
     } = item
 
     return (
-      <Accordion.Item eventKey={i} className="w-100">
+      <Accordion.Item eventKey={i} key={i} className="w-100">
         <Accordion.Header>{label}</Accordion.Header>
         <Accordion.Body>
           {rowBody && <div dangerouslySetInnerHTML={{ __html: rowBody }} />}

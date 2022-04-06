@@ -21,9 +21,9 @@ export default function RoomList({ rooms }) {
   })
 
   return (
-    <div className={styles.root}>
+    <>
       <h2 className={styles.heading}>Our Accommodations</h2>
       <div className={styles.rooms}>{roomSelection}</div>
-    </div>
+    </>
   )
 }

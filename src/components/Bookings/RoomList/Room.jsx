@@ -19,8 +19,3 @@ export default function Room({ roomName, roomImage, description }) {
     </Card>
   )
 }
-{
-  /* <div className={styles.imageContainer}>
-  <img src={roomImage} />
-</div> */
-}

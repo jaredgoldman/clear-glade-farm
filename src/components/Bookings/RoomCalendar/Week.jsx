@@ -23,11 +23,6 @@ export default function Week({
   ).length
   const roomCount = rooms.filter(room => room.node.type === 'Room').length
 
-  useEffect(() => {
-    const availableRooms = getAvailableBookings()
-    setAvailabilites(availableRooms)
-  }, [bookings])
-
   const getAvailableBookings = () => {
     let rooms = 0
     let campSites = 0
@@ -38,13 +33,20 @@ export default function Week({
         campSites += 1
       }
     }
+
     const availableRooms = roomCount - rooms
     const availableCampSites = campsiteCount - campSites
+
     return {
       rooms: availableRooms,
       campSites: availableCampSites,
     }
   }
+
+  useEffect(() => {
+    const availableRooms = getAvailableBookings()
+    setAvailabilites(availableRooms)
+  }, [bookings])
 
   const handleShowModal = () => {
     setShowModal(true)
@@ -62,22 +64,20 @@ export default function Week({
     <Card className={styles.root}>
       <Card.Header>{dateRange}</Card.Header>
       <Card.Body className="pb-10">
-        <Card.Text>
-          <Alert
-            className="text-center"
-            variant={roomsAvailable ? 'success' : 'secondary'}
-          >
-            {roomsAvailable ? 'Rooms available!' : 'No rooms available'}
-          </Alert>
-          <Alert
-            className="text-center mb-0"
-            variant={campsitesAvailable ? 'success' : 'secondary'}
-          >
-            {campsitesAvailable
-              ? 'Campsites available!'
-              : 'No campsites available'}
-          </Alert>
-        </Card.Text>
+        <Alert
+          className="text-center"
+          variant={roomsAvailable ? 'success' : 'secondary'}
+        >
+          {roomsAvailable ? 'Rooms available!' : 'No rooms available'}
+        </Alert>
+        <Alert
+          className="text-center mb-0"
+          variant={campsitesAvailable ? 'success' : 'secondary'}
+        >
+          {campsitesAvailable
+            ? 'Campsites available!'
+            : 'No campsites available'}
+        </Alert>
       </Card.Body>
       <RoomModal
         showModal={showModal}

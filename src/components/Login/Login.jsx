@@ -31,7 +31,7 @@ export default function Login() {
   }
 
   return (
-    <main className={styles.root}>
+    <main>
       <div className={styles.error}>
         {authError && (
           <Row>
@@ -59,7 +59,6 @@ export default function Login() {
         )}
       </div>
       <Form
-        className={styles.form}
         onSubmit={e => {
           e.preventDefault()
           handleLogin()
