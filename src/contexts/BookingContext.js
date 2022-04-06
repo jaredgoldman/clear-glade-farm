@@ -1,6 +1,6 @@
-import React, { useContext, useEffect, useState } from "react"
-import { useStaticQuery, graphql } from "gatsby"
-import axios from "axios"
+import React, { useContext, useEffect, useState } from 'react'
+import { useStaticQuery, graphql } from 'gatsby'
+import axios from 'axios'
 import {
   addWeeks,
   startOfWeek,
@@ -10,10 +10,10 @@ import {
   addYears,
   getWeeksInMonth,
   getMonth,
-} from "date-fns"
-import UseEmail from "../hooks/UseEmail"
-import { useAuth } from "./AuthContext"
-import { months as monthNames } from "../constants/date"
+} from 'date-fns'
+import UseEmail from '../hooks/UseEmail'
+import { useAuth } from './AuthContext'
+import { months as monthNames } from '../constants/date'
 const serverURL = process.env.GATSBY_STRAPI_API_URL
 
 const BookingContext = React.createContext()
@@ -73,14 +73,17 @@ export function BookingProvider({ children }) {
     }
   }
 
-  const getWeeks = (currDate, numOfWeeks) => {
-    const firstWeek = formatWeek(currDate)
-    const weeks = [firstWeek]
+  const weekInFuture = date => date.getTime() >= Date.now()
 
+  const getWeeks = (currDate, numOfWeeks) => {
+    const firstWeek = weekInFuture(currDate) ? formatWeek(currDate) : null
+    const weeks = [firstWeek].filter(Boolean)
     for (let i = 1; i < numOfWeeks; i++) {
       currDate = addWeeks(currDate, 1)
-      const formattedWeek = formatWeek(currDate)
-      weeks.push(formattedWeek)
+      if (weekInFuture(currDate)) {
+        const formattedWeek = formatWeek(currDate)
+        weeks.push(formattedWeek)
+      }
     }
     return weeks
   }
