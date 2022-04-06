@@ -1,7 +1,6 @@
 import React from "react"
 import InvTable from "./InvTable"
 import * as styles from "./index.module.scss"
-import image from "../../images/dairy-products.png"
 
 export default function Inventory({ products }) {
   return (

@@ -1,11 +1,8 @@
-import React from "react"
-import { useState } from "react"
-
+import React, { useState } from "react"
 import * as styles from "./Login.module.scss"
-
 import { useAuth } from "../../contexts/AuthContext"
-import xImage from "../../images/x.png"
-import { Form, Button } from "react-bootstrap"
+import { Form, Button, Toast, Row, Col } from "react-bootstrap"
+import { StaticImage } from "gatsby-plugin-image"
 
 export default function Login() {
   const { login, authError, setAuthError } = useAuth()
@@ -31,17 +28,32 @@ export default function Login() {
 
   return (
     <main className={styles.root}>
-      {authError && (
-        <div className={styles.error}>
-          <div>{authError}</div>
-          <div
-            onClick={() => handleCloseAuthError()}
-            className={styles.imageContainer}
-          >
-            <img src={xImage} />
-          </div>
-        </div>
-      )}
+      <div className={styles.error}>
+        {authError && (
+          <Row>
+            <Col xs={15}>
+              <Toast
+                className="w-100"
+                bg="danger"
+                onClick={handleCloseAuthError}
+                on
+              >
+                <Toast.Header className="justify-content-end">
+                  <StaticImage
+                    src="../../images/close.png"
+                    alt="close"
+                    placeholder="blurred"
+                    layout="constrained"
+                    width={10}
+                    height={10}
+                  />
+                </Toast.Header>
+                <Toast.Body>{authError}</Toast.Body>
+              </Toast>
+            </Col>
+          </Row>
+        )}
+      </div>
       <Form
         className={styles.form}
         onSubmit={e => {

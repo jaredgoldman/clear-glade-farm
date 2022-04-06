@@ -32,6 +32,9 @@ export function AuthProvider({ children }) {
 
   const login = async (email, password) => {
     try {
+      if (!email || !password) {
+        return handleSetAuthError("Please enter a valid email or password")
+      }
       const user = await axios.post(`${serverUrl}/api/auth/local/`, {
         identifier: email,
         password,
