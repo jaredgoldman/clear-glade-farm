@@ -1,8 +1,8 @@
-import React from "react"
+import React from 'react'
 // import announcementData from "../../../mocks/announcementData";
-import Announcement from "./Announcement"
+import Announcement from './Announcement'
 
-import * as styles from "./index.module.scss"
+import * as styles from './index.module.scss'
 
 export default function Announcements({ posts }) {
   const announcements = posts.reverse().map((post, i) => {
@@ -19,6 +19,8 @@ export default function Announcements({ posts }) {
           key={id}
         />
       )
+    } else {
+      return null
     }
   })
 

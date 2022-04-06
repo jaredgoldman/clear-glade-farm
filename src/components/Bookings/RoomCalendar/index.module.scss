@@ -22,6 +22,14 @@
   margin-bottom: 3rem;
 }
 
+.confirmToast {
+  top: 1rem;
+  right: 1rem;
+  position: fixed;
+  width: 15rem;
+  z-index: 2000;
+}
+
 @media only screen and (max-width: 800px) {
   .weeks {
     grid-template-columns: 1fr;

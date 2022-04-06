@@ -1,14 +1,15 @@
-import React, { useState, useEffect } from "react"
-import getYear from "date-fns/getYear"
-import Week from "./Week"
-import * as styles from "./index.module.scss"
-import { Dropdown } from "react-bootstrap"
-import { useBooking } from "../../../contexts/BookingContext"
+import React, { useState, useEffect } from 'react'
+import getYear from 'date-fns/getYear'
+import Week from './Week'
+import * as styles from './index.module.scss'
+import { Dropdown, Row, Col, Toast } from 'react-bootstrap'
+import { useBooking } from '../../../contexts/BookingContext'
 
 export default function RoomCalendar() {
   const { months, bookings, rooms } = useBooking()
   const [month, setMonth] = useState()
-  const monthName = month?.month || ""
+  const [showConfirmToast, setShowConfirmToast] = useState(false)
+  const monthName = month?.month || ''
 
   useEffect(() => {
     if (months?.length) setMonth(months[0])
@@ -40,6 +41,7 @@ export default function RoomCalendar() {
         bookings={bookings}
         rooms={rooms}
         key={i}
+        setShowConfirmToast={setShowConfirmToast}
       />
     )
   })
@@ -53,8 +55,28 @@ export default function RoomCalendar() {
   })
 
   const currentYear = getYear(Date.now())
+
+  const handleCloseToast = () => setShowConfirmToast(false)
+
   return (
     <div>
+      <div className={styles.confirmToast}>
+        {showConfirmToast && (
+          <Row>
+            <Col xs={15}>
+              <Toast
+                className="w-100 z-index-10"
+                bg="success"
+                onClick={handleCloseToast}
+                on
+              >
+                <Toast.Header className="justify-content-end" />
+                <Toast.Body>Booking succesful!</Toast.Body>
+              </Toast>
+            </Col>
+          </Row>
+        )}
+      </div>
       <div className={styles.dropdown}>
         <p>Select a month in {currentYear}</p>
         <Dropdown>

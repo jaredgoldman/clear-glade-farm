@@ -1,16 +1,17 @@
-import React, { useState, useEffect, useRef } from "react"
-import Modal from "react-bootstrap/Modal"
-import Button from "react-bootstrap/Button"
-import RoomOption from "./RoomOption"
-import { useBooking } from "../../../contexts/BookingContext"
+import React, { useState } from 'react'
+import Modal from 'react-bootstrap/Modal'
+import Button from 'react-bootstrap/Button'
+import RoomOption from './RoomOption'
+import { useBooking } from '../../../contexts/BookingContext'
 
-import * as styles from "./RoomModal.module.scss"
+import * as styles from './RoomModal.module.scss'
 
 export default function RoomModal({
   showModal,
   setShowModal,
   weekInfo,
   bookings,
+  setShowConfirmToast,
 }) {
   const [showConfirm, setShowConfirm] = useState(false)
   const [selectedRoomData, setSelectedRoom] = useState()
@@ -53,18 +54,16 @@ export default function RoomModal({
     setShowConfirm(false)
   }
 
-  const handleCancelConfirm = () => {
-    setShowConfirm(false)
-  }
+  const handleCancelConfirm = () => setShowConfirm(false)
 
-  const handleBookRoom = () => {
-    bookRoom(selectedRoomData)
+  const handleBookRoom = async () => {
+    await bookRoom(selectedRoomData)
     setProcessingBooking(prevValue => !prevValue)
-    handleCloseModal() // Remove this?
+    setShowConfirmToast(true)
+    handleCloseModal()
     setTimeout(() => {
       setShowConfirm(false)
     }, 1000)
-    // TODO: add snackbar confirmation notifcation
   }
 
   return (
