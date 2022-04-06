@@ -1,7 +1,9 @@
-import React, { useContext, useState, useEffect } from "react"
-import axios from "axios"
-import ls from "local-storage"
-import { navigate } from "gatsby-link"
+// Libraries
+import React, { useContext, useState, useEffect } from 'react'
+import axios from 'axios'
+import ls from 'local-storage'
+import { navigate } from 'gatsby-link'
+// Data
 const serverUrl = process.env.GATSBY_STRAPI_API_URL
 
 const AuthContext = React.createContext()
@@ -13,10 +15,10 @@ export function useAuth() {
 export function AuthProvider({ children }) {
   const [loggedIn, setLoggedIn] = useState(false)
   const [currentUser, setCurrentUser] = useState(null)
-  const [authError, setAuthError] = useState("")
+  const [authError, setAuthError] = useState('')
 
   useEffect(() => {
-    const user = ls.get("user")
+    const user = ls.get('user')
     if (user) {
       setCurrentUser(user)
       setLoggedIn(true)
@@ -26,32 +28,32 @@ export function AuthProvider({ children }) {
   const handleSetAuthError = errorMsg => {
     setAuthError(errorMsg)
     setTimeout(() => {
-      setAuthError("")
+      setAuthError('')
     }, 5000)
   }
 
   const login = async (email, password) => {
     try {
       if (!email || !password) {
-        return handleSetAuthError("Please enter a valid email or password")
+        return handleSetAuthError('Please enter a valid email or password')
       }
       const user = await axios.post(`${serverUrl}/api/auth/local/`, {
         identifier: email,
         password,
       })
-      ls("user", user.data)
-      navigate("/about")
+      ls('user', user.data)
+      navigate('/about')
     } catch (e) {
-      handleSetAuthError("Error logging in")
+      handleSetAuthError('Error logging in')
     }
   }
 
   const logout = () => {
-    ls.remove("user")
+    ls.remove('user')
     setLoggedIn(false)
   }
 
-  const { jwt } = ls.get("user") || {}
+  const { jwt } = ls.get('user') || {}
 
   const authToken = {
     headers: {

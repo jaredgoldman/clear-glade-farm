@@ -1,3 +1,4 @@
+// Libraries
 import React, { useContext, useEffect, useState } from 'react'
 import { useStaticQuery, graphql } from 'gatsby'
 import axios from 'axios'
@@ -11,8 +12,10 @@ import {
   getWeeksInMonth,
   getMonth,
 } from 'date-fns'
+// Hooks
 import UseEmail from '../hooks/UseEmail'
 import { useAuth } from './AuthContext'
+// Data
 import { months as monthNames } from '../constants/date'
 const serverURL = process.env.GATSBY_STRAPI_API_URL
 

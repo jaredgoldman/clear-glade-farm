@@ -8,10 +8,7 @@ import { Dropdown, Row, Col, Toast } from 'react-bootstrap'
 import { useBooking } from '../../../contexts/BookingContext'
 // Assets
 import * as styles from './index.module.scss'
-// Libraries
-// Components
-// Data
-// Assets
+
 export default function RoomCalendar() {
   const { months, bookings, rooms } = useBooking()
   const [month, setMonth] = useState()
