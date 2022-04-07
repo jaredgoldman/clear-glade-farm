@@ -20,7 +20,7 @@ export default function Landing() {
           autoplay
           loop
           muted
-          playsInline
+          playsinline
         >
           <source src="${farmVideo}" type="video/mp4" />
         </video>
