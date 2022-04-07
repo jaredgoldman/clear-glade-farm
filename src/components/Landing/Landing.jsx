@@ -10,39 +10,40 @@ import farmVideo from '../../videos/farm.mp4'
 import * as styles from './Landing.module.scss'
 
 export default function Landing() {
-  const VideoBackground = () => {
-    return (
-      <div
-        dangerouslySetInnerHTML={{
-          __html: `
-          <video
-          class="${loggedIn ? styles.videoHeader : styles.video}"
-          autoplay="true"
-          loop
-          muted
-          playsinline
-        >
-          <source src="${farmVideo}" type="video/mp4" />
-        </video>
-       `,
-        }}
-      ></div>
-    )
-  }
+  // const VideoBackground = () => {
+  //   return (
+  //     <div
+  //       dangerouslySetInnerHTML={{
+  //         __html: `
+  //         <video
+  //         class="${loggedIn ? styles.videoHeader : styles.video}"
+  //         autoplay="true"
+  //         loop
+  //         muted
+  //         playsinline
+  //       >
+  //         <source src="${farmVideo}" type="video/mp4" />
+  //       </video>
+  //      `,
+  //       }}
+  //     ></div>
+  //   )
+  // }
   const { loggedIn } = useAuth()
   return (
     <main className={styles.root}>
       <div className={styles.videoContainer}>
-        {/* <video
+        <video
           className={loggedIn ? styles.videoHeader : styles.video}
-          autoPlay
+          autoPlay={true}
           loop
           muted
+          controls={false}
           playsInline
         >
           <source src={farmVideo} type="video/mp4" />
-        </video> */}
-        <VideoBackground />
+        </video>
+        {/* <VideoBackground /> */}
       </div>
       <div className={styles.content}>
         <h1 className={styles.welcome}>Welcome To Clear Glade</h1>
