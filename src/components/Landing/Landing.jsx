@@ -17,7 +17,7 @@ export default function Landing() {
           __html: `
           <video
           class="${loggedIn ? styles.videoHeader : styles.video}"
-          autoPlay
+          autoplay
           loop
           muted
           playsInline
