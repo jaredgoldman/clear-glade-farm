@@ -55,13 +55,19 @@
 
   .brandLogin {
     margin-right: 0;
+    .gatsby-image-wrapper-constrained {
+      display: none;
+    }
   }
 
   .image {
     display: none;
+  }
+}
 
-    .gatsby-image-wrapper-constrained {
-      display: none;
-    }
+@media only screen and (max-width: 768px) {
+  .video,
+  .videoHeader {
+    display: none;
   }
 }
