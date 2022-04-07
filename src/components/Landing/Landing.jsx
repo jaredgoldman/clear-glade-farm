@@ -10,6 +10,22 @@ import farmVideo from '../../videos/farm.mp4'
 import * as styles from './Landing.module.scss'
 
 export default function Landing() {
+  // const EmbedVideo = () => {
+  //   return (
+  //     <div
+  //       dangerouslySetInnerHTML={{
+  //         __html: `
+  //       <video
+  //       autoPlay
+  //       loop
+  //       muted
+  //       playsInline
+  //     >,
+  //      `,
+  //       }}
+  //     ></div>
+  //   )
+  // }
   const { loggedIn } = useAuth()
   return (
     <main className={styles.root}>
@@ -19,6 +35,7 @@ export default function Landing() {
           autoPlay
           loop
           muted
+          playsInline
         >
           <source src={farmVideo} type="video/mp4" />
         </video>
@@ -26,15 +43,16 @@ export default function Landing() {
       <div className={styles.content}>
         <h1 className={styles.welcome}>Welcome To Clear Glade</h1>
         <div className={styles.brandLogin}>
-          <StaticImage
-            src="../../images/logo.png"
-            alt="logo"
-            placeholder="blurred"
-            layout="constrained"
-            width={500}
-            height={500}
-            className={styles.image}
-          />
+          <div className={styles.image}>
+            <StaticImage
+              src="../../images/logo.png"
+              alt="logo"
+              placeholder="blurred"
+              layout="constrained"
+              width={500}
+              height={500}
+            />
+          </div>
           {!loggedIn && <Login />}
         </div>
       </div>
