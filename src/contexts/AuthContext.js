@@ -3,6 +3,7 @@ import React, { useContext, useState, useEffect } from 'react'
 import axios from 'axios'
 import ls from 'local-storage'
 import { navigate } from 'gatsby-link'
+import addHours from 'date-fns/addHours'
 // Data
 const serverUrl = process.env.GATSBY_STRAPI_API_URL
 
@@ -17,11 +18,17 @@ export function AuthProvider({ children }) {
   const [currentUser, setCurrentUser] = useState(null)
   const [authError, setAuthError] = useState('')
 
+  const expiresDate = ls.get('expires')
+  const expired = expiresDate < Date.now()
+
   useEffect(() => {
     const user = ls.get('user')
-    if (user) {
+    if (user && !expired) {
       setCurrentUser(user)
       setLoggedIn(true)
+    } else {
+      ls.remove('user')
+      navigate('/')
     }
   }, [])
 
@@ -42,6 +49,8 @@ export function AuthProvider({ children }) {
         password,
       })
       ls('user', user.data)
+      const expires = addHours(Date.now(), 2).getTime()
+      ls('expires', expires)
       navigate('/about')
     } catch (e) {
       handleSetAuthError('Error logging in')
