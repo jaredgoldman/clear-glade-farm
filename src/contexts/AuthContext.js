@@ -49,7 +49,7 @@ export function AuthProvider({ children }) {
         password,
       })
       ls('user', user.data)
-      const expires = addHours(Date.now(), 2).getTime()
+      const expires = addHours(Date.now(), 1).getTime()
       ls('expires', expires)
       navigate('/about')
     } catch (e) {
