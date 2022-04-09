@@ -15,7 +15,7 @@ export default function Event({ name, start, end, description, imageUrl }) {
 
   return (
     <Card>
-      <Card.Img variant="top" src={imageSrc} />
+      {imageUrl && <Card.Img variant="top" src={imageSrc} />}
       <Card.Body>
         <Card.Title>{name}</Card.Title>
         <Card.Text>{description}</Card.Text>

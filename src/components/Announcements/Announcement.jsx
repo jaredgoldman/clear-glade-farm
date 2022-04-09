@@ -12,7 +12,7 @@ export default function Announcement({ title, content, createdAt, imageUrl }) {
 
   return (
     <Card>
-      <Card.Img variant="top" src={imageSrc} />
+      {imageUrl && <Card.Img variant="top" src={imageSrc} />}
       <Card.Body>
         <Card.Title>{title}</Card.Title>
         <Card.Text>{content}</Card.Text>
