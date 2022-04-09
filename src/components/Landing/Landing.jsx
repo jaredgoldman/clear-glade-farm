@@ -26,7 +26,7 @@ export default function Landing() {
         </video>
       </div>
       <div className={styles.content}>
-        <h1 className={styles.welcome}>Welcome To Clear Glade</h1>
+        <h1 className={styles.welcome}>Welcome To Clear Glade Farm</h1>
         <div className={styles.brandLogin}>
           <div className={styles.image}>
             <StaticImage
