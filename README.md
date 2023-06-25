@@ -2,7 +2,7 @@
 
 Simple web app for Clear Glade Farm.
 
-## Featurescd
+## Features
 
 - Built on Gatsby and React Bootstrap.
 - Custom booking tool
@@ -11,6 +11,10 @@ Simple web app for Clear Glade Farm.
 ## Getting Started
 
 - Run `npm run dev` to spin up API, which can be found [here](https://github.com/jaredgoldman/clear-glade-api). Then run the same command on this repo to spin up the site. As long as there is at least one entry in each collection fetched from the API, the site will build without GraphQL errors.
+
+## Visit production site
+
+- You can browse the site and manage bookings for a generic user [here](https://clear-glade-farm.netlify.app) - use email: `user@usersite.com` and password: `password`
 
 ## Dependencies
 
