@@ -35,7 +35,7 @@ export default function Header() {
 
                 <Link to="/announcements">Annoucements</Link>
 
-                <Link to="/schedule">Schedule</Link>
+                <Link to="/schedule">Events</Link>
 
                 <Link to="/inventory">Inventory</Link>
 
