@@ -10,6 +10,7 @@ Simple web app for Clear Glade Farm.
 
 ## Getting Started
 
+- Due to a big with the used version of webpack, run this command first: `export NODE_OPTIONS=--no-experimental-fetch`
 - Run `npm run dev` to spin up API, which can be found [here](https://github.com/jaredgoldman/clear-glade-api). Then run the same command on this repo to spin up the site. As long as there is at least one entry in each collection fetched from the API, the site will build without GraphQL errors.
 
 ## Visit production site
