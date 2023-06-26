@@ -23,30 +23,30 @@ export default function Week({
   ).length
   const roomCount = rooms.filter(room => room.node.type === 'Room').length
 
-  const getAvailableBookings = () => {
-    let rooms = 0
-    let campSites = 0
-    for (let booking of bookings) {
-      if (booking.type === 'Room') {
-        rooms += 1
-      } else {
-        campSites += 1
+  useEffect(() => {
+    const getAvailableBookings = () => {
+      let rooms = 0
+      let campSites = 0
+      for (let booking of bookings) {
+        if (booking.type === 'Room') {
+          rooms += 1
+        } else {
+          campSites += 1
+        }
+      }
+
+      const availableRooms = roomCount - rooms
+      const availableCampSites = campsiteCount - campSites
+
+      return {
+        rooms: availableRooms,
+        campSites: availableCampSites,
       }
     }
 
-    const availableRooms = roomCount - rooms
-    const availableCampSites = campsiteCount - campSites
-
-    return {
-      rooms: availableRooms,
-      campSites: availableCampSites,
-    }
-  }
-
-  useEffect(() => {
     const availableRooms = getAvailableBookings()
     setAvailabilites(availableRooms)
-  }, [bookings])
+  }, [bookings, campsiteCount, roomCount])
 
   const handleShowModal = () => {
     setShowModal(true)
